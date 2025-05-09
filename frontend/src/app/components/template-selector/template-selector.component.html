@@ -1,0 +1,9 @@
+<div>
+  <h2>Select a Template</h2>
+  <ul class="list-group">
+    <li *ngFor="let t of templates" class="list-group-item d-flex justify-content-between align-items-center">
+      {{ t }}
+      <button class="btn btn-sm btn-outline-primary" (click)="select(t)">Choose</button>
+    </li>
+  </ul>
+</div>

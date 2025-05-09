@@ -1,0 +1,22 @@
+<div>
+  <h2>Fill Section (Template: {{ template }})</h2>
+  <form (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label>Title</label>
+      <input class="form-control" [(ngModel)]="title" name="title" required />
+    </div>
+    <div class="mb-3">
+      <label>Abstract</label>
+      <textarea class="form-control" [(ngModel)]="abstract" name="abstract" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label>Link</label>
+      <input class="form-control" [(ngModel)]="link" name="link" required />
+    </div>
+    <div class="mb-3">
+      <label>Thumbnail</label>
+      <input type="file" (change)="onFileChange($event)" accept="image/*" required />
+    </div>
+    <button class="btn btn-primary" type="submit">Preview Section</button>
+  </form>
+</div>
