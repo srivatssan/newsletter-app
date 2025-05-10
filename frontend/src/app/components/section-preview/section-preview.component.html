@@ -1,13 +1,11 @@
-<div>
-  <h2>Section Preview</h2>
-  <div *ngFor="let sec of sections" class="card mb-3">
-    <img [src]="environment.apiUrl + sec.thumbnail_url" class="card-img-top" />
+<div class="section-preview-container">
+  <h2>Preview Sections</h2>
+  <div *ngFor="let section of sections" class="card mb-3">
+    <img [src]="section.thumbnail_url" class="card-img-top" alt="Thumbnail" />
     <div class="card-body">
-      <h5 class="card-title">{{ sec.title }}</h5>
-      <p class="card-text">{{ sec.abstract }}</p>
-      <a [href]="sec.link" class="btn btn-secondary" target="_blank">Original</a>
+      <h5 class="card-title">{{ section.title }}</h5>
+      <p class="card-text">{{ section.abstract }}</p>
+      <a [href]="section.link" class="btn btn-primary" target="_blank">Read More</a>
     </div>
   </div>
-  <button class="btn btn-success me-2" (click)="accept()">Accept</button>
-  <button class="btn btn-warning" (click)="modify()">Modify</button>
 </div>

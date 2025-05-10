@@ -7,17 +7,67 @@
 </head>
 <body class="p-4">
   <div class="container">
-    <h1 class="mb-4">Monthly Newsletter</h1>
-    {% for sec in sections %}
-      <div class="card mb-3">
-        <img src="{{ sec.thumbnail_url }}" class="card-img-top" alt="Thumbnail" />
-        <div class="card-body">
-          <h5 class="card-title">{{ sec.title }}</h5>
-          <p class="card-text">{{ sec.abstract }}</p>
-          <a href="{{ sec.link }}" class="btn btn-primary">Read more</a>
+    <h1 class="mb-4 text-center">Monthly Newsletter</h1>
+
+    <!-- Trending Technology in Gen AI -->
+    <section class="mb-5">
+      <h2 class="mb-3">Trending Technology in Gen AI</h2>
+      {% for sec in sections if sec.category == "Trending Technology" %}
+        <div class="card mb-3">
+          <img src="{{ sec.thumbnail_url }}" class="card-img-top" alt="Thumbnail" />
+          <div class="card-body">
+            <h5 class="card-title">{{ sec.title }}</h5>
+            <p class="card-text">{{ sec.abstract }}</p>
+            <a href="{{ sec.link }}" class="btn btn-primary">Read more</a>
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </section>
+
+    <!-- Ongoing Work -->
+    <section class="mb-5">
+      <h2 class="mb-3">Ongoing Work</h2>
+      {% for sec in sections if sec.category == "Ongoing Work" %}
+        <div class="card mb-3">
+          <img src="{{ sec.thumbnail_url }}" class="card-img-top" alt="Thumbnail" />
+          <div class="card-body">
+            <h5 class="card-title">{{ sec.title }}</h5>
+            <p class="card-text">{{ sec.abstract }}</p>
+            <a href="{{ sec.link }}" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-5">
+      <h2 class="mb-3">Success Stories</h2>
+      {% for sec in sections if sec.category == "Success Stories" %}
+        <div class="card mb-3">
+          <img src="{{ sec.thumbnail_url }}" class="card-img-top" alt="Thumbnail" />
+          <div class="card-body">
+            <h5 class="card-title">{{ sec.title }}</h5>
+            <p class="card-text">{{ sec.abstract }}</p>
+            <a href="{{ sec.link }}" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+    <!-- General Trivia -->
+    <section class="mb-5">
+      <h2 class="mb-3">General Trivia</h2>
+      {% for sec in sections if sec.category == "General Trivia" %}
+        <div class="card mb-3">
+          <img src="{{ sec.thumbnail_url }}" class="card-img-top" alt="Thumbnail" />
+          <div class="card-body">
+            <h5 class="card-title">{{ sec.title }}</h5>
+            <p class="card-text">{{ sec.abstract }}</p>
+            <a href="{{ sec.link }}" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
   </div>
 </body>
 </html>

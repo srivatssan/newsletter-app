@@ -1,5 +1,5 @@
-<div class="section-form-container">
-  <h2>Fill Sections for {{ templateName }}</h2>
+<div>
+  <h2>Edit Sections for {{ templateName }}</h2>
   <form>
     <div *ngFor="let section of sections; let i = index" class="mb-3">
       <h4>{{ section.category }}</h4>
@@ -16,6 +16,6 @@
         <input type="text" class="form-control" [(ngModel)]="sections[i].link" />
       </div>
     </div>
-    <button type="button" class="btn btn-success" (click)="saveSections()">Save Sections</button>
+    <button type="button" class="btn btn-success" (click)="saveTemplate()">Save Template</button>
   </form>
 </div>

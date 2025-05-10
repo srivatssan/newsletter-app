@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { TemplateService } from '../../services/template.service';
 
-@Component({ selector: 'app-section-preview', templateUrl: './section-preview.component.html' })
+@Component({
+  selector: 'app-section-preview',
+  templateUrl: './section-preview.component.html',
+  styleUrls: ['./section-preview.component.css']
+})
 export class SectionPreviewComponent implements OnInit {
   sections: any[] = [];
-  constructor(private http: HttpClient, private router: Router) {}
-  ngOnInit() {
-    this.http.get<any[]>(`${environment.apiUrl}/sections`).subscribe(data => this.sections = data);
+
+  constructor(private templateService: TemplateService) {}
+
+  ngOnInit(): void {
+    this.templateService.getTemplateData().subscribe(
+      (data: any) => {
+        this.sections = data;
+      },
+      (error) => {
+        console.error('Error fetching sections:', error);
+      }
+    );
   }
-  accept() { this.router.navigate(['/full-preview', /* pass template if needed */ sections[0].template ]); }
-  modify() { this.router.navigate(['/section-form', /* pass template */ ]); }
 }

@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TemplateService } from '../../services/template.service';
 
 @Component({
-  selector: 'app-section-form',
-  templateUrl: './section-form.component.html',
-  styleUrls: ['./section-form.component.css']
+  selector: 'app-section-editor',
+  templateUrl: './section-editor.component.html',
+  styleUrls: ['./section-editor.component.css']
 })
-export class SectionFormComponent implements OnInit {
+export class SectionEditorComponent implements OnInit {
   templateName: string = '';
   sections: any[] = [];
 
@@ -18,10 +18,10 @@ export class SectionFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.templateName = this.route.snapshot.paramMap.get('template') || '';
-    this.templateService.getTemplateSections(this.templateName).subscribe(
+    this.templateName = this.route.snapshot.paramMap.get('templateName') || '';
+    this.templateService.getSections().subscribe(
       (data: any) => {
-        this.sections = data; // Dynamically fetched sections
+        this.sections = data;
       },
       (error) => {
         console.error('Error fetching sections:', error);
@@ -29,14 +29,14 @@ export class SectionFormComponent implements OnInit {
     );
   }
 
-  saveSections(): void {
+  saveTemplate(): void {
     this.templateService.saveTemplate(this.sections).subscribe(
       (response) => {
-        console.log('Sections saved successfully:', response);
-        this.router.navigate(['/section-preview']);
+        console.log('Template saved successfully:', response);
+        this.router.navigate(['/preview', this.templateName]);
       },
       (error) => {
-        console.error('Error saving sections:', error);
+        console.error('Error saving template:', error);
       }
     );
   }
